@@ -1,10 +1,10 @@
 package ru.practicum.mapper;
 
-import org.springframework.stereotype.Component;
+import lombok.experimental.UtilityClass;
 import ru.practicum.dto.StatRequest;
 import ru.practicum.model.Stats;
 
-@Component
+@UtilityClass
 public class StatsMapper {
     public Stats mapToDomain(StatRequest request) {
         return Stats.builder()

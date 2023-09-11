@@ -15,11 +15,10 @@ import java.util.List;
 public class StatsServiceImpl implements StatsService {
 
     private final StatsRepository statsRepository;
-    private final StatsMapper statsMapper;
 
     @Override
     public void saveStat(StatRequest request) {
-        statsRepository.save(statsMapper.mapToDomain(request));
+        statsRepository.save(StatsMapper.mapToDomain(request));
     }
 
     @Override
