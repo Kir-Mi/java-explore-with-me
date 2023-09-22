@@ -13,14 +13,6 @@ import java.util.Set;
 @UtilityClass
 public class CompilationMapper {
 
-    public Compilation toCompilation(NewCompilationDto newCompilationDto, Collection<Event> events) {
-        return Compilation.builder()
-                .events((Set<Event>) events)
-                .pinned(newCompilationDto.getPinned())
-                .title(newCompilationDto.getTitle())
-                .build();
-    }
-
     public Compilation toCompilation(NewCompilationDto newCompilationDto) {
         return Compilation.builder()
                 .pinned(newCompilationDto.getPinned())
