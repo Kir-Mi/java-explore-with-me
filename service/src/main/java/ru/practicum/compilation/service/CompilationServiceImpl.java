@@ -56,11 +56,11 @@ public class CompilationServiceImpl implements CompilationService {
         Compilation compilation = CompilationMapper.toCompilation(newCompilationDto);
 
         Set<Long> eventsId = newCompilationDto.getEvents();
-        if (eventsId != null) {
+        if (Objects.nonNull(eventsId)) {
             Set<Event> events = new HashSet<>(eventRepository.findAllByIdIn(eventsId));
             compilation.setEvents(events);
         }
-        if (compilation.getPinned() == null) {
+        if (Objects.isNull(compilation.getPinned())) {
             compilation.setPinned(false);
         }
 
@@ -82,14 +82,14 @@ public class CompilationServiceImpl implements CompilationService {
         Compilation toUpdate = compilationRepository.findById(compId).orElseThrow(() ->
                 new NotFoundException(String.format("Compilation %s not found", compId), HttpStatus.NOT_FOUND));
 
-        if (dto.getTitle() != null && !dto.getTitle().isBlank()) {
+        if (Objects.nonNull(dto.getTitle()) && !dto.getTitle().isBlank()) {
             toUpdate.setTitle(dto.getTitle());
         }
-        if (dto.getPinned() != null) {
+        if (Objects.nonNull(dto.getPinned())) {
             toUpdate.setPinned(dto.getPinned());
         }
 
-        if (dto.getEvents() != null && !dto.getEvents().isEmpty()) {
+        if (Objects.nonNull(dto.getEvents()) && !dto.getEvents().isEmpty()) {
             Set<Long> eventsId = dto.getEvents();
             Collection<Event> events = eventRepository.findAllByIdIn(eventsId);
             toUpdate.setEvents(new HashSet<>(events));
@@ -107,7 +107,7 @@ public class CompilationServiceImpl implements CompilationService {
 
     private void setConfirmedRequestsToEvent(CompilationDto dto) {
         Set<EventShortDto> compilationEvents = dto.getEvents();
-        if (compilationEvents != null) {
+        if (Objects.nonNull(compilationEvents)) {
             List<Long> eventIds = new ArrayList<>();
 
             compilationEvents.forEach(el -> eventIds.add(el.getId()));

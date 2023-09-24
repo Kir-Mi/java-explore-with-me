@@ -6,9 +6,7 @@ import org.hibernate.proxy.HibernateProxy;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
