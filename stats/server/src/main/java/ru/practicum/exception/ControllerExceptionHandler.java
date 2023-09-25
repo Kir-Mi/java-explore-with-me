@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.Map;
 
-@ControllerAdvice("ru.practicum.shareit")
+@ControllerAdvice("ru.practicum")
 @Slf4j
 public class ControllerExceptionHandler {
 
