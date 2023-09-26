@@ -48,6 +48,7 @@ public class NewEventDto {
     @PositiveOrZero
     private long participantLimit;
 
+    @Builder.Default
     private boolean requestModeration = true;
 
     @NotBlank
