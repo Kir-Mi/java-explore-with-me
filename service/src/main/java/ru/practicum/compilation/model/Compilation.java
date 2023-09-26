@@ -26,6 +26,7 @@ public class Compilation {
             joinColumns = @JoinColumn(name = "compilation_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id")
     )
+    @Builder.Default
     private Set<Event> events = new HashSet<>();
 
     @Column(name = "pinned")
